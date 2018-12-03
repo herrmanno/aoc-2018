@@ -1,0 +1,5 @@
+const fs = require("fs")
+let input = fs.readFileSync("input.txt").toString()
+input = input.replace(/\n/g, " ")
+let result = eval(input)
+console.log(`The result frequency is ${result}`)
