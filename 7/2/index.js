@@ -32,11 +32,10 @@ while (done.size !== Object.keys(conditions).length) {
         if (!job) break
 
         doing.add(job)
-        for (let j = 0; j < i; j++) {
-            worker[j] = worker[j] || null
-        }
         worker.push(...new Array(60 + job.charCodeAt(0) - 64).fill(job))
     }
+
+    workers.filter(w => !w[i]).forEach(w => w[i] = null)
 
     // print(i)
     i++
@@ -44,7 +43,7 @@ while (done.size !== Object.keys(conditions).length) {
 
 
 const max = workers.sort((a, b) => b.length - a.length)[0]
-console.log(`With 5 workers it takes ${max} seconds`)
+console.log(`With 5 workers it takes ${i - 1} seconds`)
 
 
 
