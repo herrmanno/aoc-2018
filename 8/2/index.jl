@@ -8,30 +8,22 @@ struct Node
 end
 
 function value(node::Node)::Int
-  return if (length(node.children) == 0)
+  if isempty(node.children)
     sum(node.meta)
   else
-    map(node.meta) do meta
-      if meta in indices(node.children, 1)
-        value(node.children[meta])
-      else
-        0
-      end
-    end |> sum
+    [value(node.children[m]) for m in node.meta if m in indices(node.children, 1)] |> sum
   end
 end
 
 function consume()::Node
   childCount = next()
   metaCount = next()
-  
-  return Node(
-    [consume() for i in range(1, childCount)],
-    [next() for i in range(1, metaCount)],
+  Node(
+    [consume() for i in 1:childCount],
+    [next() for i in 1:metaCount]
   )
 end
 
-root = consume()
-rootValue = value(root)
+rootValue = value(consume())
 
 println("The value of root is $rootValue")

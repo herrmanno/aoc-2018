@@ -20,15 +20,13 @@ function consume()::Node
   metaCount = next()
   
   return Node(
-    [consume() for i in range(1, childCount)],
-    [next() for i in range(1, metaCount)],
+    [consume() for i in 1:childCount],
+    [next() for i in 1:metaCount],
   )
 end
 
-root = consume()
-total = reduce((acc, node) -> begin
-  return acc + sum(node.meta)
-end, root::Node, 0::Int) 
-
+total = reduce(consume(), 0) do acc, node
+  acc + sum(node.meta)
+end
 
 println("The sum of all meta nodes is $total")
