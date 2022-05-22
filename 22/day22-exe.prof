@@ -1,0 +1,79 @@
+	Thu May 19 23:16 2022 Time and Allocation Profiling Report  (Final)
+
+	   day22-exe +RTS -N -p -RTS
+
+	total time  =        0.01 secs   (46 ticks @ 1000 us, 12 processors)
+	total alloc =  85,869,488 bytes  (excludes profiling overheads)
+
+COST CENTRE                MODULE SRC                          %time %alloc
+
+shortestPath.go.neighbours Lib    src/Lib.hs:(52,17)-(59,21)    39.1   17.0
+shortestPath.go.goRoute    Lib    src/Lib.hs:(63,17)-(88,56)    17.4    7.0
+shortestPath.go.routes     Lib    src/Lib.hs:60:17-47           10.9   10.9
+shortestPath.go            Lib    src/Lib.hs:(50,9)-(94,39)      8.7    6.1
+shortestPath.go.visited'   Lib    src/Lib.hs:61:17-49            6.5   14.3
+insert                     Lib    src/Lib.hs:122:1-64            6.5   29.6
+get.m'                     Lib    src/Lib.hs:127:9-64            6.5    7.1
+MAIN                       MAIN   <built-in>                     2.2    0.3
+get                        Lib    src/Lib.hs:(125,1)-(128,24)    2.2    4.0
+shortestPath.go.heap''.\   Lib    src/Lib.hs:89:63-92            0.0    2.6
+
+
+                                                                                                     individual      inherited
+COST CENTRE                     MODULE                SRC                         no.     entries  %time %alloc   %time %alloc
+
+MAIN                            MAIN                  <built-in>                  199           0    2.2    0.3   100.0  100.0
+ CAF                            GHC.Conc.Signal       <entire-module>             306           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.Encoding       <entire-module>             287           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.Encoding.Iconv <entire-module>             285           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.Handle.FD      <entire-module>             276           0    0.0    0.1     0.0    0.1
+ CAF                            GHC.IO.Handle.Text    <entire-module>             274           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.Read              <entire-module>             260           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.Show              <entire-module>             256           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.Event.Poll        <entire-module>             221           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.Event.Thread      <entire-module>             220           0    0.0    0.0     0.0    0.0
+ CAF:main1                      Main                  <no location info>          396           0    0.0    0.0     0.0    0.0
+  main                          Main                  app/Main.hs:(6,1)-(11,22)   398           1    0.0    0.0     0.0    0.0
+ CAF:main2                      Main                  <no location info>          395           0    0.0    0.0     0.0    0.0
+ CAF:parseInput3                Lib                   <no location info>          360           0    0.0    0.0     0.0    0.0
+ CAF:parseInput6                Lib                   <no location info>          359           0    0.0    0.0     0.0    0.0
+  parseInput                    Lib                   src/Lib.hs:(109,1)-(113,22) 409           0    0.0    0.0     0.0    0.0
+   parseInput.target            Lib                   src/Lib.hs:112:9-68         410           0    0.0    0.0     0.0    0.0
+ CAF:parseInput9                Lib                   <no location info>          356           0    0.0    0.0     0.0    0.0
+  parseInput                    Lib                   src/Lib.hs:(109,1)-(113,22) 428           0    0.0    0.0     0.0    0.0
+   parseInput.depth             Lib                   src/Lib.hs:111:9-41         429           0    0.0    0.0     0.0    0.0
+ main                           Main                  app/Main.hs:(6,1)-(11,22)   399           0    0.0    0.0    97.8   99.7
+  run2                          Lib                   src/Lib.hs:(40,1)-(43,37)   400           1    0.0    0.0    97.8   99.6
+   run2.(...)                   Lib                   src/Lib.hs:41:9-43          406           1    0.0    0.0     0.0    0.0
+    parseInput                  Lib                   src/Lib.hs:(109,1)-(113,22) 407           1    0.0    0.0     0.0    0.0
+     parseInput.(...)           Lib                   src/Lib.hs:110:9-27         413           1    0.0    0.0     0.0    0.0
+     parseInput.depth           Lib                   src/Lib.hs:111:9-41         427           1    0.0    0.0     0.0    0.0
+     parseInput.target          Lib                   src/Lib.hs:112:9-68         408           1    0.0    0.0     0.0    0.0
+      parseInput.target.\       Lib                   src/Lib.hs:112:32-46        411           1    0.0    0.0     0.0    0.0
+     parseInput.x1              Lib                   src/Lib.hs:110:9-27         430           1    0.0    0.0     0.0    0.0
+     parseInput.x2              Lib                   src/Lib.hs:110:9-27         412           1    0.0    0.0     0.0    0.0
+   run2.cave                    Lib                   src/Lib.hs:42:9-62          416           1    0.0    0.0     0.0    0.2
+    regionType                  Lib                   src/Lib.hs:(19,1)-(23,18)   423         262    0.0    0.0     0.0    0.0
+    buildCaveMap                Lib                   src/Lib.hs:(97,1)-(106,53)  417           1    0.0    0.0     0.0    0.2
+     buildCaveMap.coords        Lib                   src/Lib.hs:99:9-77          418           1    0.0    0.1     0.0    0.1
+     buildCaveMap.memo          Lib                   src/Lib.hs:100:9-54         420           1    0.0    0.1     0.0    0.1
+      buildCaveMap.e            Lib                   src/Lib.hs:101:9-47         424         278    0.0    0.0     0.0    0.0
+       buildCaveMap.g           Lib                   src/Lib.hs:(102,9)-(106,53) 425         278    0.0    0.0     0.0    0.0
+   run2.depth                   Lib                   src/Lib.hs:41:9-43          426           1    0.0    0.0     0.0    0.0
+   run2.target                  Lib                   src/Lib.hs:41:9-43          405           1    0.0    0.0     0.0    0.0
+   run2.x                       Lib                   src/Lib.hs:41:9-43          415           1    0.0    0.0     0.0    0.0
+   run2.y                       Lib                   src/Lib.hs:41:9-43          419           1    0.0    0.0     0.0    0.0
+   shortestPath                 Lib                   src/Lib.hs:(47,1)-(94,39)   401           1    0.0    0.0    97.8   99.4
+    shortestPath.go             Lib                   src/Lib.hs:(50,9)-(94,39)   403       38588    8.7    6.1    97.8   99.4
+     get                        Lib                   src/Lib.hs:(125,1)-(128,24) 404       38588    2.2    4.0     8.7   11.1
+      get.m'                    Lib                   src/Lib.hs:127:9-64         433       38587    6.5    7.1     6.5    7.1
+     shortestPath.go.heap''     Lib                   src/Lib.hs:89:17-106        432       38587    0.0    0.7     6.5   32.9
+      shortestPath.go.heap''.\  Lib                   src/Lib.hs:89:63-92         434       92580    0.0    2.6     6.5   32.2
+       insert                   Lib                   src/Lib.hs:122:1-64         435       92580    6.5   29.6     6.5   29.6
+     shortestPath.go.neighbours Lib                   src/Lib.hs:(52,17)-(59,21)  414       38587   39.1   17.0    39.1   17.0
+     shortestPath.go.routes     Lib                   src/Lib.hs:60:17-47         421       38587   10.9   10.9    28.3   17.9
+      shortestPath.go.goRoute   Lib                   src/Lib.hs:(63,17)-(88,56)  422       73236   17.4    7.0    17.4    7.0
+       ==                       Lib                   src/Lib.hs:26:46-47         431       57469    0.0    0.0     0.0    0.0
+     shortestPath.go.visited'   Lib                   src/Lib.hs:61:17-49         436       38586    6.5   14.3     6.5   14.3
+     ==                         Lib                   src/Lib.hs:26:46-47         437           1    0.0    0.0     0.0    0.0
+    singleton                   Lib                   src/Lib.hs:119:1-42         402           1    0.0    0.0     0.0    0.0
